@@ -1,0 +1,13 @@
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.button {
+    width: 3em;
+    height: 3em;
+    margin: 0.5rem;
+    border-radius: 0.2rem;
+    border: 1.3px solid rgb(103, 99, 99);
+}

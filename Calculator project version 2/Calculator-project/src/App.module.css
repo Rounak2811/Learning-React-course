@@ -1,0 +1,9 @@
+.outerDisplay{
+  border:2px solid rgba(86, 84, 84, 0.515);
+  width:15rem;
+  height:fit-content;
+  margin:auto;
+  border-radius: 1rem;
+
+}
+

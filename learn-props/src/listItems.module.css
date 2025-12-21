@@ -1,0 +1,10 @@
+.kg-item {
+    /* background-color: burlywood; */
+    font-weight: 600;
+    color: blue;
+    list-style-type:number;
+    margin:5px;
+}
+.button{
+   float:right;
+}
