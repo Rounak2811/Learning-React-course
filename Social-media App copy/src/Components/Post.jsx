@@ -21,7 +21,7 @@ const Post = ({ post }) => {
           <span  key={tag} className="badge text-bg-primary tag">{tag}</span>
         ))}
         <button type="button" className="btn btn-primary reactions">
-          Reactions <span className="badge text-bg-secondary">{post.reactions}</span>
+          Reactions <span className="badge text-bg-secondary">{post.reactions.likes+post.reactions.dislikes}</span>
         </button>
       </div>
     </div>

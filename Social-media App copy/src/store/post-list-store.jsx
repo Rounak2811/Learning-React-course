@@ -3,6 +3,7 @@ import { createContext, useReducer } from "react";
 export const contextPostList = createContext({
   postList: [],
   addPost: () => {},
+  addPosts: () => {},
   deletePost: () => {},
 });
 
@@ -10,6 +11,9 @@ const postListReducer = (currPostList, action) => {
   let newPostList = currPostList;
   if (action.type === "DELETE_POST") {
     newPostList = currPostList.filter((post) => post.id != action.payload);
+  } else if (action.type === "INSERT_INITIAL_POST") {
+    newPostList = action.payload.posts;
+    console.log(newPostList);
   } else if (action.type === "INSERT_POST") {
     const newPost = {
       id: Date.now(),
@@ -25,10 +29,7 @@ const postListReducer = (currPostList, action) => {
 };
 
 const PostListProvider = ({ children }) => {
-  const [postList, dispatchPostList] = useReducer(
-    postListReducer,
-    DEFAULT_POST_LIST
-  );
+  const [postList, dispatchPostList] = useReducer(postListReducer, []);
 
   const addPost = (userID, postTitle, postBody, reactions, hashtags) => {
     const postItemAction = {
@@ -39,6 +40,15 @@ const PostListProvider = ({ children }) => {
         postBody,
         reactions,
         hashtags,
+      },
+    };
+    dispatchPostList(postItemAction);
+  };
+  const addPosts = (posts) => {
+    const postItemAction = {
+      type: "INSERT_INITIAL_POST",
+      payload: {
+        posts,
       },
     };
     dispatchPostList(postItemAction);
@@ -56,6 +66,7 @@ const PostListProvider = ({ children }) => {
       value={{
         postList,
         addPost,
+        addPosts,
         deletePost,
       }}
     >
@@ -63,24 +74,5 @@ const PostListProvider = ({ children }) => {
     </contextPostList.Provider>
   );
 };
-
-const DEFAULT_POST_LIST = [
-  {
-    id: "1",
-    title: "Going to Mumbai",
-    body: "Hey guys, whatsApp, I am going to Mumbai for my vacations. Hope to enjoy a lot. Peace out",
-    reactions: 2,
-    userId: "user-9",
-    tags: ["vacation", "Mumbai", "Enjoying"],
-  },
-  {
-    id: "2",
-    title: "Going to Goa",
-    body: "Hey guys, whatsApp, I am going to Goa for my vacations. Hope to enjoy a lot. Peace out",
-    reactions: 2,
-    userId: "user-12",
-    tags: ["vacation", "Goa", "EnjoyingWithFamily"],
-  },
-];
 
 export default PostListProvider;
