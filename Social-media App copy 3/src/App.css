@@ -1,0 +1,33 @@
+.app-container{
+    display: flex;
+}
+
+.content{
+    width:100%;
+}
+
+.sidebar{
+    min-height: 100vh;
+}
+.post-card{
+    margin: 1rem 2rem;
+}
+.tag{
+    margin: 0rem 0.2rem;
+}
+.reactions{
+    font-size:small;
+    margin:1rem 0;
+    padding:0.13rem;
+}
+
+.form-container{
+    padding: 2rem;
+}
+
+.welcome-message{
+    padding: 3rem 0rem;
+}
+.setSpinner{
+    padding:2rem 2rem;
+}
